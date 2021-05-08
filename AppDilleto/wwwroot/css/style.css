@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 
-=======
- HEAD
->>>>>>> 0c292fc4f6fa8341d1e8e5cf8d3865b11a973921
+
 .carousel-item {
     height: 34rem;
     background: #000;
@@ -230,7 +227,7 @@ img {
 body {
 	font-family: 'Source Sans Pro', sans-serif;
     font-size: 100%;
-   /* background: url(../img/bg.jpg)no-repeat center;*/
+  background: url(../img/carrusel01.jpg)no-repeat center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
