@@ -27,6 +27,10 @@ namespace AppDilleto.Controllers
             return View();
         }
 
+        public IActionResult Carrito()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
