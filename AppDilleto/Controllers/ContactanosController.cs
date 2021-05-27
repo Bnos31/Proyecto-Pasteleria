@@ -22,24 +22,28 @@ namespace AppDilleto.Controllers
             _logger = logger;
             _context = context;
         }
-        public IActionResult Index()
-        {
-            
-            var listcontactos = _context.DataContactanos.ToList();
-            ViewData["Message"] = "";
-            return View(listcontactos);
-        }
 
         public IActionResult Contactanos()
         {
             return View();
         }
 
-        
-        public IActionResult Error()
+        [HttpGet]
+        public IActionResult Create()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
         }
-        
+
+    
+        [HttpPost]
+        public IActionResult Create(Contactanos objContactanos)
+        {
+            _context.Add(objContactanos);
+            _context.SaveChanges();
+            ViewData["Message"] = "El Mensaje fue enviado con éxito";
+            return View();
+        }
+
+    
     }
 }
