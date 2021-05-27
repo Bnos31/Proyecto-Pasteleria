@@ -1,4 +1,4 @@
-@model IEnumerable<AppDilleto.Models.ContactanosModel>
+@model IEnumerable<AppDilleto.Models.Contactanos>
 
 <h2>Lista de Usuarios registrados en Contactanos</h2>
 
@@ -9,10 +9,16 @@
      <thead class="thead-dark">
         <tr>
                 <th scope="col">
-                    #
+                     @Html.DisplayNameFor(model => model.Id)
                 </th>
                 <th scope="col">
                     @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                    <th scope="col">
+                    @Html.DisplayNameFor(model => model.Apellidos)
+                </th>
+                    <th scope="col">
+                    @Html.DisplayNameFor(model => model.Celular)
                 </th>
                 <th scope="col">
                     @Html.DisplayNameFor(model => model.Email)
@@ -27,11 +33,19 @@
         {
             <tr>
                 <th scope="row">
-                    #
+                    @Html.DisplayNameFor(model => model.Id)
                 </th>
                 <td>
                     @Html.DisplayFor(modelItem => item.Nombre)
                 </td>
+
+                  <th scope="col">
+                    @Html.DisplayNameFor(model => model.Apellidos)
+                </th>
+                    <th scope="col">
+                    @Html.DisplayNameFor(model => model.Celular)
+                </th>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
