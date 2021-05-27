@@ -12,6 +12,5 @@ namespace AppDilleto.Data
             : base(options)
         {
         }
-        public DbSet<AppDilleto.Models.ContactanosModel> DataContactanos { get; set; }
     }
 }
