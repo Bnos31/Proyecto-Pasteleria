@@ -8,14 +8,15 @@
 
     @if(UserManager.GetUserName(User).Equals("brigitte@gmail.com")){
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Producto" asp-action="Index">Producto</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Productos" asp-action="Index">Producto</a>
         </li> 
-        <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Catalogo" asp-action="Index">Catalogo</a>
-        </li> 
-    }else{
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Proforma" asp-action="Index">Carrito</a>
+        </li> 
+  
+    }else{
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Prforma" asp-action="Index">Carrito</a>
         </li> 
          <li class="nav-item">
         <a class="nav-link text-dark" asp-area="" asp-controller="Contactanos" asp-action="Create">Contacto</a>
