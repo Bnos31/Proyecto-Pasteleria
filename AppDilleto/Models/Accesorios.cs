@@ -5,5 +5,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AppDilleto.Models
 {
+    [Table("t_accesorios")]
+    public class Accesorios
+    {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Column("id")]
+        public int ID {get; set;}
+
+        [Required(ErrorMessage = "Por favor ingrese nombre de Accesorio")]
+        [Display(Name="Nombre Accesorio")]
+        public String Name {get; set;}
+
+        [Required(ErrorMessage = "Porfavor ingrese el precio")]
+        public Decimal Price { get; set; }
+
   
+
+    }
 }
