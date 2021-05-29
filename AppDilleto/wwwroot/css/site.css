@@ -79,4 +79,9 @@ p.card-text{
     font-weight: 600;
     line-height: 24px;
 }
+h5.card-title{
+  margin-bottom: .75rem;
+  font-weight: bold;
+}
+
 
