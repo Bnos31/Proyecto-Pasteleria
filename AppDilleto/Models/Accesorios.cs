@@ -5,27 +5,5 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AppDilleto.Models
 {
-    [Table("t_accesorios")]
-    public class Accesorios
-    {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("id")]
-        public int ID {get; set;}
-
-        [Required(ErrorMessage = "Por favor ingrese nombre de producto")]
-        [Display(Name="Nombre Accesorio")]
-        public String Name {get; set;}
-
-        [Required(ErrorMessage = "Porfavor ingrese el precio")]
-        public Decimal Price { get; set; }
-
-        [Required(ErrorMessage = "Porfavor ingrese la imagen")]
-        public String ImagenName { get; set; }
-
-        [Required(ErrorMessage = "Please enter Status")]
-        public String Status { get; set; }
-
-        public virtual ICollection<Proforma> ProformaItems { get; set; }
-
-    }
+  
 }
