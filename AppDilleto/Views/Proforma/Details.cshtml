@@ -8,8 +8,14 @@
 
 <div>
     <h4>Proforma</h4>
-    <hr />
+    
     <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ImagenName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ImagenName)
+        </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.UserID)
         </dt>

@@ -13,10 +13,15 @@ namespace AppDilleto.Models
         public int ID {get; set;}
 
         public String UserID {get; set;}
+        [Column("imagenname")]        
+        public String ImagenName {get; set;}
 
         public Productos Producto {get; set;}
 
+        [Display(Name="Cantidad")]
         public int Quantity{get; set;}
+
+        [Display(Name="Precio")]
 
         public Decimal Price { get; set; }
     }
