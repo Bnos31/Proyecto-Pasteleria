@@ -19,6 +19,34 @@ namespace AppDilleto.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.5");
 
+            modelBuilder.Entity("AppDilleto.Models.Accesorios", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<string>("ImagenName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("t_accesorios");
+                });
+
             modelBuilder.Entity("AppDilleto.Models.Contactanos", b =>
                 {
                     b.Property<int>("Id")
@@ -107,6 +135,13 @@ namespace AppDilleto.Migrations
                         .HasColumnName("id")
                         .UseIdentityByDefaultColumn();
 
+                    b.Property<int?>("AccesoriosID")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ImagenName")
+                        .HasColumnType("text")
+                        .HasColumnName("imagenname");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("numeric");
 
@@ -120,6 +155,8 @@ namespace AppDilleto.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("AccesoriosID");
 
                     b.HasIndex("ProductoID");
 
@@ -326,6 +363,10 @@ namespace AppDilleto.Migrations
 
             modelBuilder.Entity("AppDilleto.Models.Proforma", b =>
                 {
+                    b.HasOne("AppDilleto.Models.Accesorios", null)
+                        .WithMany("ProformaItems")
+                        .HasForeignKey("AccesoriosID");
+
                     b.HasOne("AppDilleto.Models.Productos", "Producto")
                         .WithMany("ProformaItems")
                         .HasForeignKey("ProductoID");
@@ -382,6 +423,11 @@ namespace AppDilleto.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("AppDilleto.Models.Accesorios", b =>
+                {
+                    b.Navigation("ProformaItems");
                 });
 
             modelBuilder.Entity("AppDilleto.Models.Productos", b =>
