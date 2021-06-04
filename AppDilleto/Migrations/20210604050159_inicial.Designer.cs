@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AppDilleto.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210529035311_inicial")]
+    [Migration("20210604050159_inicial")]
     partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,34 @@ namespace AppDilleto.Migrations
                 .UseIdentityByDefaultColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.5");
+
+            modelBuilder.Entity("AppDilleto.Models.Accesorios", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<string>("ImagenName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("t_accesorios");
+                });
 
             modelBuilder.Entity("AppDilleto.Models.Contactanos", b =>
                 {
@@ -52,6 +80,89 @@ namespace AppDilleto.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("t_contactanos");
+                });
+
+            modelBuilder.Entity("AppDilleto.Models.Pedido", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("UserID")
+                        .HasColumnType("text");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("t_order");
+                });
+
+            modelBuilder.Entity("AppDilleto.Models.Productos", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<string>("ImagenName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("t_product");
+                });
+
+            modelBuilder.Entity("AppDilleto.Models.Proforma", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<int?>("AccesoriosID")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ImagenName")
+                        .HasColumnType("text")
+                        .HasColumnName("imagenname");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("numeric");
+
+                    b.Property<int?>("ProductoID")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("UserID")
+                        .HasColumnType("text");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("AccesoriosID");
+
+                    b.HasIndex("ProductoID");
+
+                    b.ToTable("t_proforma");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -252,6 +363,19 @@ namespace AppDilleto.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("AppDilleto.Models.Proforma", b =>
+                {
+                    b.HasOne("AppDilleto.Models.Accesorios", null)
+                        .WithMany("ProformaItems")
+                        .HasForeignKey("AccesoriosID");
+
+                    b.HasOne("AppDilleto.Models.Productos", "Producto")
+                        .WithMany("ProformaItems")
+                        .HasForeignKey("ProductoID");
+
+                    b.Navigation("Producto");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -301,6 +425,16 @@ namespace AppDilleto.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("AppDilleto.Models.Accesorios", b =>
+                {
+                    b.Navigation("ProformaItems");
+                });
+
+            modelBuilder.Entity("AppDilleto.Models.Productos", b =>
+                {
+                    b.Navigation("ProformaItems");
                 });
 #pragma warning restore 612, 618
         }
