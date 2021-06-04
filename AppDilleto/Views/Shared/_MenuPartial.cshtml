@@ -6,7 +6,7 @@
 @if (SignInManager.IsSignedIn(User))
 {
 
-    @if(UserManager.GetUserName(User).Equals("admin@gmail.com"  )){
+    @if(UserManager.GetUserName(User).Equals("admin@gmail.com"  )){ // Password:Admin123.
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Productos" asp-action="Index">(+)Producto</a>
         </li> 
