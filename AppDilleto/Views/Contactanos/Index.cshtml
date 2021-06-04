@@ -1,15 +1,16 @@
 @model IEnumerable<AppDilleto.Models.Contactanos>
 
-<h2>Lista de Usuarios registrados en Contactanos</h2>
+    <div  style="background: #FADBD8">
+        <h1>Contactos Registrados</h1>
+    </div>
 
-<p>
-    <a asp-action="Create">Create</a>
-</p>
-<table class="table table-hover">
-     <thead class="thead-dark">
-        <tr>
-                <th scope="col">
-                     @Html.DisplayNameFor(model => model.Id)
+<table class="table table-hover" style="margin-top: 5%;">
+     <thead  style="background: #F7819F; color:#FFFFFF">
+        <tr >
+
+               
+                <th scope="col" >
+                   @Html.DisplayNameFor(model => model.Id)
                 </th>
                 <th scope="col">
                     @Html.DisplayNameFor(model => model.Nombre)
@@ -26,24 +27,28 @@
                 <th scope="col">
                     @Html.DisplayNameFor(model => model.Mensaje)
                 </th>
+                   <th scope="col">
+                    #
+                </th>
         </tr>
     </thead>
+    
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
                 <th scope="row">
-                    @Html.DisplayNameFor(model => model.Id)
+                    @Html.DisplayFor(model => item.Id)
                 </th>
                 <td>
                     @Html.DisplayFor(modelItem => item.Nombre)
                 </td>
 
                   <th scope="col">
-                    @Html.DisplayNameFor(model => model.Apellidos)
+                    @Html.DisplayFor(model => item.Apellidos)
                 </th>
                     <th scope="col">
-                    @Html.DisplayNameFor(model => model.Celular)
+                    @Html.DisplayFor(model => item.Celular)
                 </th>
 
                 <td>
@@ -52,9 +57,24 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Mensaje)
                 </td>
+
+                <td>
+               
+                <a asp-action="Details" class="btn btn-light"  style="background: #F7819F; color:#FFFFFF"  asp-route-id="@item.Id">Editar</a>
+                
+
+            </td>
             </tr>
+
+             
         }
     </tbody>
+    
 </table>
+<div style="margin-top: 5%; text-align: left;">
+<p>
+    <a class="btn btn-light"  style="background: #F7819F; color:#FFFFFF" asp-action="Create" >Crear nuevo Contacto</a>
+</p>
+</div>
 
 <h1>@ViewData["Message"]</h1>
