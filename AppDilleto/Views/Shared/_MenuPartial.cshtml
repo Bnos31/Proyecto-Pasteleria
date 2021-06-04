@@ -17,21 +17,35 @@
 
 
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="" asp-controller="Proforma" asp-action="Index">Carrito</a>
-        </li> 
-  
+                          <a class="nav-link text-dark" asp-area="" asp-controller="Contactanos" asp-action="Index">Contacto</a>
+                        </li> 
     }else{
         <li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Prforma" asp-action="Index">Carrito</a>
         </li> 
-         <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Contactanos" asp-action="Create">Contacto</a>
+          <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Catalogo" asp-action="Index">Catalogo</a>
         </li> 
+        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Nosotros" asp-action="Index">Nosotros</a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a class="nav-link text-dark" asp-area="" asp-controller="Contactanos" asp-action="Create">Contacto</a>
+                        </li> 
     }
 }
 else
 {
+   
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Contactanos" asp-action="Create">Contacto</a>
-    </li> 
+        <a class="nav-link text-dark" asp-area="" asp-controller="Catalogo" asp-action="Index">Catalogo</a>
+        </li> 
+        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Nosotros" asp-action="Index">Nosotros</a>
+                        </li>
+
+                        <li class="nav-item">
+                          <a class="nav-link text-dark" asp-area="" asp-controller="Contactanos" asp-action="Create">Contacto</a>
+                        </li> 
 }

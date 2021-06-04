@@ -27,6 +27,12 @@ namespace AppDilleto.Controllers
         {
             return View();
         }
+        public IActionResult Index()
+        {
+            var listacontactanos = _context.DataContactanos.ToList();
+            ViewData["message"]="";
+            return View(listacontactanos);
+        }
 
         [HttpGet]
         public IActionResult Create()
