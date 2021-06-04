@@ -48,6 +48,22 @@ namespace AppDilleto.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "t_accesorios",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Price = table.Column<decimal>(type: "numeric", nullable: false),
+                    ImagenName = table.Column<string>(type: "text", nullable: false),
+                    Status = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_t_accesorios", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "t_contactanos",
                 columns: table => new
                 {
@@ -62,6 +78,36 @@ namespace AppDilleto.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_t_contactanos", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "t_order",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    UserID = table.Column<string>(type: "text", nullable: true),
+                    Total = table.Column<decimal>(type: "numeric", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_t_order", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "t_product",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Price = table.Column<decimal>(type: "numeric", nullable: false),
+                    ImagenName = table.Column<string>(type: "text", nullable: false),
+                    Status = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_t_product", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -170,6 +216,36 @@ namespace AppDilleto.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "t_proforma",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    UserID = table.Column<string>(type: "text", nullable: true),
+                    imagenname = table.Column<string>(type: "text", nullable: true),
+                    ProductoID = table.Column<int>(type: "integer", nullable: true),
+                    Quantity = table.Column<int>(type: "integer", nullable: false),
+                    Price = table.Column<decimal>(type: "numeric", nullable: false),
+                    AccesoriosID = table.Column<int>(type: "integer", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_t_proforma", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_t_proforma_t_accesorios_AccesoriosID",
+                        column: x => x.AccesoriosID,
+                        principalTable: "t_accesorios",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_t_proforma_t_product_ProductoID",
+                        column: x => x.ProductoID,
+                        principalTable: "t_product",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -206,6 +282,16 @@ namespace AppDilleto.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_t_proforma_AccesoriosID",
+                table: "t_proforma",
+                column: "AccesoriosID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_t_proforma_ProductoID",
+                table: "t_proforma",
+                column: "ProductoID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -229,10 +315,22 @@ namespace AppDilleto.Migrations
                 name: "t_contactanos");
 
             migrationBuilder.DropTable(
+                name: "t_order");
+
+            migrationBuilder.DropTable(
+                name: "t_proforma");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "t_accesorios");
+
+            migrationBuilder.DropTable(
+                name: "t_product");
         }
     }
 }

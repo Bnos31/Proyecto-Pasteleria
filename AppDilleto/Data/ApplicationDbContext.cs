@@ -15,7 +15,9 @@ namespace AppDilleto.Data
         public DbSet<AppDilleto.Models.Contactanos> DataContactanos { get; set; }
         public DbSet<AppDilleto.Models.Proforma> DataCarrito { get; set; }
         public DbSet<AppDilleto.Models.Productos> DataProductos { get; set; }
-
         public DbSet<AppDilleto.Models.Pedido> DataPedidos { get; set; }
+        public DbSet<AppDilleto.Models.Prod> DataProd { get; set; }
+        public DbSet<AppDilleto.Models.Proforma1> DataCarrito1 { get; set; }
+
     }
 }
