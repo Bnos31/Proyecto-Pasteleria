@@ -17,5 +17,7 @@ namespace AppDilleto.Data
         public DbSet<AppDilleto.Models.Productos> DataProductos { get; set; }
 
         public DbSet<AppDilleto.Models.Pedido> DataPedidos { get; set; }
+
+         public DbSet<AppDilleto.Models.Prod> DataProd { get; set; }
     }
 }
