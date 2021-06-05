@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<AppDilleto.Models.Productos>
+@{
+    ViewData["Title"] = "Home Page";
+}
 
 <div class="card text-center" >
   <div class="card-header" >
@@ -12,11 +15,9 @@
   </div>
 </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
+
+<table class="table table-hover" style="margin-top: 3%;">
+    <thead style="background: #F7819F; color:#FFFFFF">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -49,11 +50,16 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+              <a asp-action="Edit" asp-route-id="@item.ID"class="btn btn-light" style="width: 22%;background: #F7819F; color:#FFFFFF; text-align: center;">Editar</a>
+                <a asp-action="Details" asp-route-id="@item.ID"class="btn btn-light" style="width: 22%;background: #F7819F; color:#FFFFFF;text-align: center;">Detalles</a>
+                <a asp-action="Delete" asp-route-id="@item.ID"class="btn btn-light" style="width: 22%;background: #F7819F; color:#FFFFFF;text-align: center;">Borrar</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<div style="margin-top: 5%; text-align: center;">
+<p>
+    <a class="btn btn-light"  style="background: #F7819F; color:#FFFFFF" asp-action="Create" >Crear nuevo Producto</a>
+</p>
+</div>
