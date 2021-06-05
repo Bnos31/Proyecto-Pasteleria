@@ -59,8 +59,15 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+	font-family: 'Source Sans Pro', sans-serif;
+    font-size: 100%;
+  background: url(../img/carrusel01.jpg)no-repeat center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    text-align: center;
 }
 .footer {
   position: absolute;
